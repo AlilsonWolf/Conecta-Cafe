@@ -24,5 +24,6 @@ public class Blog
     
 
     public DateTime Datablog { get; set; }
-  
+
+    public ICollection<BlogTag> BlogTags { get; set; }
 } 

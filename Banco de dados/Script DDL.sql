@@ -30,7 +30,7 @@ create table Avaliacao
 	Pessoa			varchar(60) not null,
 	Titulo			varchar(100) not null,
 	Texto			varchar(500) not null,
-	Nota			decimal(1,0),
+	Nota			decimal(1,0) not null,
 	DataAvaliacao	date,
 	constraint PK_Avaliacao primary key(Id)
 );
