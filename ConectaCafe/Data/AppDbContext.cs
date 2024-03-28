@@ -21,7 +21,19 @@ namespace ConectaCafe.Data;
         base.OnModelCreating(Builder);
         // Fluent API
         #region Muitos Para Muitos do BlogTag  
-        #endregion
+         Builder.Entity<BlogTag>().HasKey(
+            bt => new{bt.BlogId, bt.TagId}
+        );
+
+        Builder.Entity<BlogTag>()
+            .HasOne(bt => bt.Blog)
+            .WithMany(b => b.BlogTags)
+            .HasForeignKey(bt => bt.BlogId);
+        Builder.Entity<BlogTag>()
+            .HasOne(bt => bt.Tag)
+            .WithMany(t => t.BlogTags)
+            .HasForeignKey(bt => bt.BlogId);
     }
 
-}
+    }
+    #endregion
