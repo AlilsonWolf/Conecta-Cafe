@@ -15,7 +15,7 @@
                             class="material-icons">add</i>Adicionar</a>
                 </div>
             </div>
-            <div class="card-body px-0 pb-2">
+            <div class="card-body  pb-2">
                 <div class="table-responsive p-0">
                     <table id="dataTable" class="table align-items-center justify-content-center mb-0 w-100">
                         <thead>
@@ -37,12 +37,12 @@
                                     <td>
                                         <a asp-action="Edit" asp-route-id="@item.Id" title="Alterar">
                                             <i class="material-icons">edit</i>
-                                            </a> 
+                                        </a>
                                         <a asp-action="Details" asp-route-id="@item.Id" title="Detalhes">
                                             <i class="material-icons">info</i>
-                                        </a> 
+                                        </a>
                                         <a asp-action="Delete" asp-route-id="@item.Id" title="Excluir">
-                                            <i class="material-icons">delete</i>  
+                                            <i class="material-icons">delete</i>
                                         </a>
                                     </td>
                                 </tr>
@@ -54,4 +54,19 @@
         </div>
     </div>
 </div>
-
+@section Scripts
+{
+    <script>
+        let dataTable = new DataTable('#dataTable', {
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/2.0.3/i18n/pt-BR.json',
+            },
+            initComplete: function (settings, json) {
+                document.querySelector('.dt-length').classList.add('text-xs');
+                document.querySelector('.dt-search').classList.add('text-xs');
+                document.querySelector('.dt-info').classList.add('text-xs');
+                document.querySelector('.dt-paging').classList.add('text-xs');
+            }
+        });
+    </script>
+}
