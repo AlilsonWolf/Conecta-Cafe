@@ -25,7 +25,7 @@ public class Produto
     public decimal Preco{ get; set; }
 
     
-   [Display(Name ="Descrição")]
+   [Display(Name ="Foto")]
    [StringLength(200)]
     public string Foto{ get; set; }
     
