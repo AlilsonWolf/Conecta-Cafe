@@ -1,8 +1,12 @@
 @model ConectaCafe.Models.Produto
+
 @{
     ViewData["Title"] = "Produtos";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
+
+
 
 <div class="row">
     <div class="col">
@@ -13,7 +17,7 @@
                 </div>
             </div>
             <div class="card-body  pb-2">
-                <form asp-action="Create" class="row">
+                <form asp-action="Create" class="row" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="col-lg-8 col-md-9">
                         <div class="col-12 mb-3">
@@ -51,7 +55,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-3 d-flex justify-content-center">
-                        <img src="~/img/sem-foto.jpeg" alt="Foto" class="w-75" onclick="changeImage()">
+                        <img id="Preview" src="~/img/sem-foto.jpeg" alt="Foto" class="w-75" onclick="changeImage()">
                         <input type="Hidden" asp-for="Foto">
                         <input type="file" name="Arquivo" id="Arquivo" accept=".jpg, .jpeg, .png, .gif, .jfif"Hidden/> 
                     </div>
@@ -63,10 +67,19 @@
                 </form>
             </div>
         </div>
-@section Scripts{
+@section Scripts {
     <script>
-        function changeImage(){
+        function changeImage() {
             document.querySelector("input[type='file']").click();
         }
+
+        window.addEventListener('load', function () {
+            document.querySelector("input[type='file']").addEventListener('change', function () {
+                if (this.files && this.files[0]) {
+                    var img = document.getElementById("Preview");
+                    img.src = URL.createObjectURL(this.files[0]);
+                }
+            });
+        });
     </script>
 }
