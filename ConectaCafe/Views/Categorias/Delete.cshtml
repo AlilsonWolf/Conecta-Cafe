@@ -1,20 +1,19 @@
 @model ConectaCafe.Models.Categoria
-
 @{
     ViewData["Title"] = "Categorias";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div class="row">
-    <div class="col-lg-8 mx-auto">
+    <div class="col-lg-6 mx-auto">
         <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                <div class="bg-gradient-warning shadow-dark border-radius-lg pt-4 pb-3 ">
-                    <h5 class="text-white text-capitalize ps-3 m-0">@ViewData["Title"]</h5>
-                    <h6 class="text-white text-capitalize ps-3 ">Excluir</h6>
+                <div class="bg-gradient-warning shadow-dark border-radius-lg pt-4 pb-3">
+                    <h5 class="text-white text-capitalize ps-3 mb-0">@ViewData["Title"]</h5>
+                    <h6 class="text-white text-capitalize ps-3">Excluir</h6>
                 </div>
             </div>
-            <div class="card-body  pb-2">
+            <div class="card-body pb-2">
                 <div class="row">
                     <div class="col-12 mb-3">
                         <div class="input-group input-group-outline mb-1">
@@ -22,13 +21,17 @@
                             <input asp-for="Nome" class="form-control" readonly />
                         </div>
                     </div>
-                    <div class="form-group">
-                        <h5 class="text-danger">Confirma a exclusão desta categoria?</h5>
+                    <div class="mb-3">
                         <form asp-action="Delete">
+                            <h5 class="text-danger">Confirma a exclusão desta Categoria?</h5>
                             <input type="hidden" asp-for="Id" />
-                            <input type="submit" value="Delete" class="btn btn-danger me-2" />
-                            <a asp-action="Index" class="btn btn-info">Voltar para lista</a>
+                            <input type="submit" value="Excluir" class="btn btn-danger me-2" />
+                            <a asp-action="Index" class="btn btn-info">Voltar</a>
                         </form>
                     </div>
                 </div>
+
             </div>
+        </div>
+    </div>
+</div>

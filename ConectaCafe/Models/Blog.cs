@@ -4,26 +4,26 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ConectaCafe.Models;
 
 [Table("Blog")]
-
 public class Blog
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
-    
-    [Required(ErrorMessage ="Por Favor, Informe o Titulo")]
-    [StringLength(100,ErrorMessage ="O Titulo deve possuir no maximo 100 caracteres")]
-    public string Titulo{ get; set; }
+        
+    [Required(ErrorMessage = "Por favor, informe o título")]
+    [StringLength(100, ErrorMessage = "O título deve possuir no máximo 100 caracteres")]
+    public string Titulo { get; set; }
 
-    [Required(ErrorMessage ="Por Favor, Insira o Texto")]
-    [StringLength(500,ErrorMessage ="O tamanho maximo do texto e de 500 caracteres")]
+    [Required(ErrorMessage = "Por favor, informe o texto")]
+    [StringLength(500, ErrorMessage = "O texto deve possuir no máximo 500 caracteres")]
     public string Texto { get; set; }
 
     [StringLength(200)]
     public string Foto { get; set; }
-    
 
-    public DateTime Datablog { get; set; }
+    [Display(Name = "Data de Cadastro")]
+    public DateTime DataBlog { get; set; }
 
     public ICollection<BlogTag> BlogTags { get; set; }
-} 
+
+}

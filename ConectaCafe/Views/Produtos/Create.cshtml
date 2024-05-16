@@ -1,22 +1,19 @@
 @model ConectaCafe.Models.Produto
-
 @{
     ViewData["Title"] = "Produtos";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-
-
-
 <div class="row">
     <div class="col">
         <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                <div class="bg-gradient-warning shadow-dark border-radius-lg pt-4 pb-3 ">
-                    <h5 class="text-white text-capitalize ps-3 m-0">@ViewData["Title"]</h5>
+                <div class="bg-gradient-warning shadow-dark border-radius-lg pt-4 pb-3">
+                    <h5 class="text-white text-capitalize ps-3 mb-0">@ViewData["Title"]</h5>
+                    <h6 class="text-white text-capitalize ps-3">Adicionar</h6>
                 </div>
             </div>
-            <div class="card-body  pb-2">
+            <div class="card-body pb-2">
                 <form asp-action="Create" class="row" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="col-lg-8 col-md-9">
@@ -30,8 +27,7 @@
                         <div class="col-12 mb-3">
                             <div class="input-group input-group-outline mb-1">
                                 <label asp-for="Descricao" class="form-label"></label>
-                                <textarea asp-asp-for="Descricao" class="form-control" rows="3"
-                                    style="resize: none" /></textarea>
+                                <textarea asp-for="Descricao" class="form-control" rows="3"></textarea>
                             </div>
                             <span asp-validation-for="Descricao" class="text-danger text-sm"></span>
                         </div>
@@ -55,31 +51,35 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-3 d-flex justify-content-center">
-                        <img id="Preview" src="~/img/sem-foto.jpeg" alt="Foto" class="w-75" onclick="changeImage()">
-                        <input type="Hidden" asp-for="Foto">
-                        <input type="file" name="Arquivo" id="Arquivo" accept=".jpg, .jpeg, .png, .gif, .jfif"Hidden/> 
+                        <img id="Preview" src="~/img/sem-foto.jfif" class="w-75" alt="Foto" onclick="changeImage()">
+                        <input type="hidden" asp-for="Foto">
+                        <input type="file" id="Arquivo" name="Arquivo" accept=".jpg,.jpeg,.png,.gif,.jfif" hidden>
                     </div>
 
-                    <div class="form-group">
+                    <div class="mb-3">
                         <input type="submit" value="Salvar" class="btn btn-success me-3" />
                         <a asp-action="Index" class="btn btn-danger">Cancelar</a>
                     </div>
                 </form>
+
             </div>
         </div>
+    </div>
+</div>
+
 @section Scripts {
     <script>
         function changeImage() {
             document.querySelector("input[type='file']").click();
         }
-
         window.addEventListener('load', function () {
-            document.querySelector("input[type='file']").addEventListener('change', function () {
-                if (this.files && this.files[0]) {
-                    var img = document.getElementById("Preview");
-                    img.src = URL.createObjectURL(this.files[0]);
-                }
-            });
-        });
+            document.querySelector("input[type='file']")
+                .addEventListener('change', function () {
+                    if (this.files && this.files[0]) {
+                        var img = document.getElementById("Preview");
+                        img.src = URL.createObjectURL(this.files[0]);
+                    }
+                });
+        })
     </script>
 }
